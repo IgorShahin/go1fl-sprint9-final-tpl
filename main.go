@@ -86,18 +86,18 @@ func main() {
 	fmt.Println("Ищем максимальное значение в один поток")
 	start := time.Now()
 
-	max := maximum(data)
+	sequentialMax := maximum(data)
 
 	elapsed := time.Since(start).Microseconds()
 
-	fmt.Printf("Максимальное значение элемента: %d\nВремя поиска: %d ms\n", max, elapsed)
+	fmt.Printf("Максимальное значение элемента: %d\nВремя поиска: %d ms\n", sequentialMax, elapsed)
 
 	fmt.Printf("Ищем максимальное значение в %d потоков\n", CHUNKS)
 	start = time.Now()
 
-	max = maxChunks(data)
+	parallelMax := maxChunks(data)
 
 	elapsed = time.Since(start).Microseconds()
 
-	fmt.Printf("Максимальное значение элемента: %d\nВремя поиска: %d ms\n", max, elapsed)
+	fmt.Printf("Максимальное значение элемента: %d\nВремя поиска: %d ms\n", parallelMax, elapsed)
 }
